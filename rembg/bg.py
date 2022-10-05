@@ -142,17 +142,17 @@ def remove(
         if only_mask:
             cutout = mask
 
-        elif alpha_matting:
-            try:
-                cutout = alpha_matting_cutout(
-                    img,
-                    mask,
-                    alpha_matting_foreground_threshold,
-                    alpha_matting_background_threshold,
-                    alpha_matting_erode_size,
-                )
-            except ValueError:
-                cutout = naive_cutout(img, mask)
+#         elif alpha_matting:
+#             try:
+#                 cutout = alpha_matting_cutout(
+#                     img,
+#                     mask,
+#                     alpha_matting_foreground_threshold,
+#                     alpha_matting_background_threshold,
+#                     alpha_matting_erode_size,
+#                 )
+#             except ValueError:
+#                 cutout = naive_cutout(img, mask)
 
         else:
             cutout = naive_cutout(img, mask)
