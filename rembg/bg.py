@@ -3,6 +3,7 @@ from enum import Enum
 from typing import List, Optional, Union
 
 import numpy as np
+import torch
 from cv2 import (
     BORDER_DEFAULT,
     MORPH_ELLIPSE,
@@ -176,7 +177,7 @@ def post_process(mask: np.ndarray) -> np.ndarray:
 #     return bio.read()
 
 def remove(
-    data: np.ndarray,
+    data: torch.Tensor,
     alpha_matting: bool = False,
     alpha_matting_foreground_threshold: int = 240,
     alpha_matting_background_threshold: int = 10,
@@ -186,7 +187,7 @@ def remove(
     post_process_mask: bool = False,
 ) -> np.ndarray:
 
-
+    data = data.numpy()
     img = Image.fromarray(data)
 
     if session is None:
